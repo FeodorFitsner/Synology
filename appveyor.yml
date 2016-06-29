@@ -20,6 +20,8 @@ assembly_info:
   
 before_build:
 - cmd: nuget restore
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 build:
   publish_nuget: true
   verbosity: minimal
